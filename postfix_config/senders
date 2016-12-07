@@ -1,0 +1,23 @@
+# This is the list of sender addresses that Postfix will rewrite on the fly.
+#
+# Whenever you make any changes, run `postmap senders` to parse it; Postfix 
+# then reads the parsed file.
+
+# Mail sent by root gets rewritten as nobody@stanford.edu
+root@hostname.stanford.edu  nobody@stanford.edu
+
+# The username-only form can also be caught...
+root    nobody@stanford.edu
+
+# ... as can the hostname-only form.
+root@hostname   nobody@stanford.edu
+
+# It's good to have root rewritten to "nobody", so that bounced mail, 
+# vacation/out-of-office notices, etc. don't get stuck somewhere.
+# You could also send it to a shared mailbox, or similar location.
+
+# You can also rewrite the sender addresses used by your applications, so that 
+# replies etc. go to a support email.
+webapp      support@mygroup.stanford.edu
+apache2     support@mygroup.stanford.edu
+httpd       support@mygroup.stanford.edu

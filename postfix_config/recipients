@@ -1,0 +1,16 @@
+# This is the list of recipient addresses that Postfix will rewrite on the fly.
+#
+# Whenever you make any changes, run `postmap recipients` to parse it; Postfix 
+# then reads the parsed file.
+
+# Mail sent to root gets rewritten as nobody@stanford.edu
+root@hostname.stanford.edu  your_shared_mailbox@stanford.edu
+
+# The username-only form can also be caught...
+root    your_shared_mailbox@stanford.edu
+
+# ... as can the hostname-only form.
+root@hostname   your_shared_mailbox@stanford.edu
+
+# In general, the only address you'll want to rewrite is root, so that 
+# miscellaneous rootmail (like cron mail) actually goes somewhere!

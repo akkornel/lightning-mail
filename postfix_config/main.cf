@@ -1,0 +1,17 @@
+# These are the things you need in your main.cf for all this to work!
+
+# Make sure you set your computer's domain!
+mydomain = example.com
+myorigin = $mydomain
+
+# These two settings are what control which maps are used to convert from 
+# client-provided address to the address we want to use.  Since these are 
+# hash-type maps, you need to run `postmap` for your changes to take effect.
+# 
+# Postfix will apply the changes to both the envelope sender (MAIL FROM:), 
+# envelope recipient (RCPT TO:), and email headers.
+sender_canonical_maps       = hash:/etc/postfix/senders
+recipient_canonical_maps    = hash:/etc/postfix/recipients
+
+# Postfix documentation on this topic can be found here:
+# http://www.postfix.org/ADDRESS_REWRITING_README.html
